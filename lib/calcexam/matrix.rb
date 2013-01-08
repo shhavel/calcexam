@@ -6,19 +6,24 @@ module Calcexam
     def initialize(operation=:*, x=[], y=[])
       @operation = operation
       @x, @y = parse_interval(x), parse_interval(y)
+      @do_shuffle = false
     end
 
     def each
-      @x.each do |x|
-        @y.each do |y|
-          yield([x, y])
-        end
+      idxs = (0..(@x.size * @y.size - 1).to_i).to_a
+      idxs.shuffle! if @do_shuffle
+      idxs.each do |idx|
+        yield self[idx]
       end
     end
 
     def shuffle!
-      @x.shuffle!
-      @y.shuffle!
+      @do_shuffle = true
+      self
+    end
+
+    def unshuffle!
+      @do_shuffle = false
       self
     end
 

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    calcexam (0.0.1)
+    calcexam (0.0.2)
       rainbow
 
 GEM
