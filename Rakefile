@@ -1,6 +1,7 @@
 require 'rubygems/package_task'
 spec = eval(File.read('calcexam.gemspec'))
-Gem::PackageTask.new(spec)
+Gem::PackageTask.new(spec) do |pkg|
+end
 
 require 'rake/testtask'
 Rake::TestTask.new do |t|
